@@ -1,0 +1,23 @@
+{    
+    "name": "biera/neducatio-wsn-server",
+    "authors": [
+        {
+            "name": "kuba",
+            "email": "kubiernacki@gmail.com"
+        }
+    ],
+    "minimum-stability" : "dev",    
+    "autoload": {
+        "psr-0": {            
+            "Neducatio": "src"
+        }
+    },   
+    "require": {
+        "symfony/console": "~2.5",
+        "symfony/dependency-injection": "~2.5",
+        "symfony/config": "~2.5",
+        "symfony/yaml": "~2.5",
+        "cboden/Ratchet": "0.4.*",   
+        "react/zmq": "dev-psr4"
+    }
+}

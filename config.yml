@@ -1,0 +1,8 @@
+parameters:
+    host: 127.0.0.1
+    port: 5556
+    websocket-port: 8080
+    
+services:    
+    logger:
+        class: Neducatio\WebSocketNotification\Common\Logger
