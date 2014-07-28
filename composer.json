@@ -1,5 +1,5 @@
 {
-    "name": "biera/neducatio-wsn-server-bundle",
+    "name": "neducatio/wsn-server-bundle",
     "authors": [
         {
             "name": "kuba",
@@ -14,11 +14,12 @@
     "minimum-stability" : "dev",
     "repositories": [
         {
-            "type": "vcs",
-            "url":  "https://bitbucket.org/biera/neducatio-wsn-server.git"
-        }                        
+            "type": "vcs",            
+            "url":  "https://github.com/n-educatio/wsn-server.git"            
+        },         
+        
     ],
     "require": {
-        "biera/neducatio-wsn-server": "dev-master"
+        "neducatio/wsn-server": "dev-master"
     }
 }
