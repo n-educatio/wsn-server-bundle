@@ -16,8 +16,7 @@
         {
             "type": "vcs",            
             "url":  "https://github.com/n-educatio/wsn-server.git"            
-        },         
-        
+        }
     ],
     "require": {
         "neducatio/wsn-server": "dev-master"
