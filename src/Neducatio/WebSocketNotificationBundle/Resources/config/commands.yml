@@ -1,0 +1,8 @@
+parameters:
+    neducatio_websocketnotification.wsn_server_command.class: Neducatio\WebSocketNotificationBundle\ServerCommand
+    
+services:    
+    neducatio_websocketnotification.wsn_server_command:
+        class: %neducatio_websocketnotification.wsn_server_command.class%        
+        tags:
+            -  { name: console.command }

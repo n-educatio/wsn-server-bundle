@@ -1,0 +1,24 @@
+{
+    "name": "biera/neducatio-wsn-server-bundle",
+    "authors": [
+        {
+            "name": "kuba",
+            "email": "kubiernacki@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {            
+            "Neducatio": "src"
+        }
+    },    
+    "minimum-stability" : "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://bitbucket.org/biera/neducatio-wsn-server.git"
+        }                        
+    ],
+    "require": {
+        "biera/neducatio-wsn-server": "dev-master"
+    }
+}
