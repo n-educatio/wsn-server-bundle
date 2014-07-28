@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
   public function getConfigTreeBuilder()
   {
     $treeBuilder = new TreeBuilder();
-    $rootNode = $treeBuilder->root('biera_rtnserver');
+    $rootNode = $treeBuilder->root('neducatio_wsnserver');
 
     $rootNode
       ->children()
@@ -29,6 +29,10 @@ class Configuration implements ConfigurationInterface
           ->cannotBeEmpty()
         ->end()
         ->scalarNode('logger')
+            ->defaultValue(null)
+        ->end()
+        ->scalarNode('session_handler')
+            ->defaultValue(null)
         ->end()
       ->end();
 

@@ -4,7 +4,8 @@ namespace Neducatio\WebSocketNotificationBundle;
 use Symfony\Component\Console\Input\InputArgument,
     Symfony\Component\Console\Input\InputInterface,
     Symfony\Component\Console\Input\InputOption,
-    Symfony\Component\Console\Output\OutputInterface;
+    Symfony\Component\Console\Output\OutputInterface,
+    Symfony\Component\DependencyInjection\ContainerInterface;
 use Neducatio\WebSocketNotification\Command\Server as BaseCommand,
     Neducatio\WebSocketNotification\Common\Logger as SimpleLogger;
 
@@ -17,6 +18,16 @@ class ServerCommand extends BaseCommand
    * @var array
    */
   protected $bundleConfiguration;
+
+  /**
+   * Sets session handler
+   *
+   * @param \SessionHandlerInterface $sessionHandler
+   */
+  public function setSessionHandler(\SessionHandlerInterface $sessionHandler)
+  {
+    $this->sessionHandler = $sessionHandler;
+  }
 
   /**
    * Sets configuration

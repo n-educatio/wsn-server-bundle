@@ -5,6 +5,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * WebSocketNotificationExtension
@@ -23,8 +24,17 @@ class NeducatioWebSocketNotificationExtension extends Extension
       ->addArgument(['host' => $config['host'], 'port' => $config['port']]);
 
     $loader->load('commands.yml');
-    $container
-      ->getDefinition('neducatio_websocketnotification.wsn_server_command')
-      ->addMethodCall('setConfiguration', [$config]);
+
+    $serverCommandDefinition = $container->getDefinition('neducatio_websocketnotification.wsn_server_command');
+
+    $serverCommandDefinition->addMethodCall('setConfiguration', [$config]);
+
+    if (null !== $config['session_handler']) {
+      $serverCommandDefinition->addMethodCall('setSessionHandler', [new Reference($config['session_handler'])]);
+    }
+
+    if (null !== $config['logger']) {
+      $serverCommandDefinition->addMethodCall('setLogger', new Reference($config['logger']));
+    }
   }
 }
