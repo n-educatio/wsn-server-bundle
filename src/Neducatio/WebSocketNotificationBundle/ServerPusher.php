@@ -15,7 +15,7 @@ class ServerPusher
   protected $config;
 
   /**
-   * @var \ZMQSocket
+   * @var ZMQSocket
    */
   protected $socket;
 
