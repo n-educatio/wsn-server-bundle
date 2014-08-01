@@ -19,6 +19,6 @@
         }
     ],
     "require": {
-        "neducatio/wsn-server": "dev-master"
+        "neducatio/wsn-server": "dev-master as 0.0.1"
     }
 }
