@@ -1,6 +1,10 @@
 parameters:
     neducatio_websocketnotification.wsn_server_pusher.class: Neducatio\WebSocketNotificationBundle\ServerPusher
+    neducatio_websocketnotification.wsn_server_logger.class: Neducatio\WebSocketNotification\Common\Logger
           
 services:
     neducatio_websocketnotification.wsn_server_pusher:
         class: %neducatio_websocketnotification.wsn_server_pusher.class%
+        
+    neducatio_websocketnotification.wsn_server_logger:
+        class: %neducatio_websocketnotification.wsn_server_logger.class%

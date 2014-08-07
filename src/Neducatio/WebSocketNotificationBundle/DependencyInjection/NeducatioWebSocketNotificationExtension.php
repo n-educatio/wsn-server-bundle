@@ -34,7 +34,7 @@ class NeducatioWebSocketNotificationExtension extends Extension
     }
 
     if (null !== $config['logger']) {
-      $serverCommandDefinition->addMethodCall('setLogger', new Reference($config['logger']));
+      $serverCommandDefinition->addMethodCall('setLogger', [new Reference($config['logger'])]);
     }
   }
 }
