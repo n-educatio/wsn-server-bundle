@@ -2,8 +2,8 @@
     "name": "neducatio/wsn-server-bundle",
     "authors": [
         {
-            "name": "kuba",
-            "email": "kubiernacki@gmail.com"
+            "name": "Jakub Biernacki",
+            "email": "kbiernacki@n-educatio.pl"
         }
     ],
     "autoload": {
@@ -12,6 +12,7 @@
         }
     },    
     "minimum-stability" : "dev",
+    "prefer-stable" : true,
     "repositories": [
         {
             "type": "vcs",            
@@ -19,6 +20,10 @@
         }
     ],
     "require": {
-        "neducatio/wsn-server": "dev-master as 0.0.1"
-    }
+        "neducatio/wsn-server": "dev-master"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.1",
+        "phpunit/phpunit": "4.1.*"
+    }    
 }
