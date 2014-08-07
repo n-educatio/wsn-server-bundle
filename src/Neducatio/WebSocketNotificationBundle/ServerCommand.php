@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument,
     Symfony\Component\Console\Output\OutputInterface,
     Symfony\Component\DependencyInjection\ContainerInterface;
 use Neducatio\WebSocketNotification\Command\Server as BaseCommand,
-    Neducatio\WebSocketNotification\Common\Logger as SimpleLogger;
+    Neducatio\WebSocketNotification\Common\Loggable;
 
 /**
  * WebSocket Notification Server Command
@@ -30,6 +30,16 @@ class ServerCommand extends BaseCommand
   }
 
   /**
+   * Set logger
+   *
+   * @param Loggable $logger
+   */
+  public function setLogger(Loggable $logger)
+  {
+    $this->logger = $logger;
+  }
+
+  /**
    * Sets configuration
    *
    * @param array $configuration
@@ -42,8 +52,6 @@ class ServerCommand extends BaseCommand
   protected function processConfiguration($commandLineInput)
   {
     $config = [];
-
-    $this->logger = new SimpleLogger();
 
     foreach(['host', 'port', 'websocket-port'] as $paramaterName) {
       $config[$paramaterName] = (null !== ($parameter = $commandLineInput->getOption($paramaterName)))
