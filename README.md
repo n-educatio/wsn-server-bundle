@@ -59,6 +59,6 @@ app/console neducatio:wsn-server:run
 
 ##### Pushing
 ```
-$container->get()->push($channel, $data);
+$container->get('neducatio_websocketnotification.wsn_server_pusher')->push($channel, $data);
 ```
 **$chanel** is a string that holds channel's (topic's) name, **$data** is everyting that can be serialized to JSON (via json_encode).
