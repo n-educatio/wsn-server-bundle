@@ -1,5 +1,7 @@
 WebSocket Notification Server Bundle
 ==========
+![alt travis](https://travis-ci.org/n-educatio/wsn-server-bundle.svg?branch=master)
+
 Integration of [wsn-server](https://github.com/n-educatio/wsn-server) into Symfony2 framework. It provides a service that pushes messages into  wsn-server.
 
 ### Requirements
