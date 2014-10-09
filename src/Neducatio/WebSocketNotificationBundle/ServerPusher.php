@@ -15,9 +15,19 @@ class ServerPusher
   protected $config;
 
   /**
+   * @var ZMQContext
+   */
+  protected $context;
+
+  /**
    * @var ZMQSocket
    */
-  protected $socket;
+  protected $notificationSocket;
+
+  /**
+   * @var ZMQSocket
+   */
+  protected $managamenetSocket;
 
   /**
    * Constructs class instance
@@ -31,6 +41,7 @@ class ServerPusher
       throw new \InvalidArgumentException();
     }
 
+    $this->context = new ZMQContext();
     $this->config = $config;
   }
 
@@ -42,17 +53,21 @@ class ServerPusher
    */
   public function push($channel, $messageData)
   {
-    if (null === $this->socket) {
-      $this->initialize();
+    if (null === $this->notificationSocket) {
+      $this->notificationSocket = $this->context->getSocket(ZMQ::SOCKET_PUSH, 'wsn-server-push');
+      $this->notificationSocket->connect(sprintf('tcp://%s:%d', $this->config['host'], $this->config['port']));
     }
 
-    $this->socket->send(JSON::encode(['data' => $messageData, 'channel'=> $channel]));
+    $this->notificationSocket->send(JSON::encode(['data' => $messageData, 'channel'=> $channel]));
   }
 
-  protected function initialize()
+  public function manageSubscriberChannel($subscriber, $channel, $action)
   {
-    $context = new ZMQContext();
-    $this->socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'wsn-server-push');
-    $this->socket->connect(sprintf('tcp://%s:%d', $this->config['host'], $this->config['port']));
+    if (null === $this->managamenetSocket) {
+      $this->managamenetSocket = $this->context->getSocket(ZMQ::SOCKET_PUSH, 'wsn-server-management');
+      $this->managamenetSocket->connect(sprintf('tcp://%s:%d', $this->config['host'], $this->config['port'] + 1));
+    }
+
+    $this->managamenetSocket->send(JSON::encode([ 'subscriber' => $subscriber, 'channel' => $channel, 'action' => $action]));
   }
 }
