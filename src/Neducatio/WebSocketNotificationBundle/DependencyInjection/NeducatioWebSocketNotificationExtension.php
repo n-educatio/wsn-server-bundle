@@ -20,7 +20,7 @@ class NeducatioWebSocketNotificationExtension extends Extension
 
     $loader->load('services.yml');
     $container
-      ->getDefinition('neducatio_websocketnotification.wsn_server_pusher')
+      ->getDefinition('neducatio_websocketnotification.wsn_server_connection')
       ->addArgument(['host' => $config['host'], 'port' => $config['port']]);
 
     $loader->load('commands.yml');
