@@ -7,7 +7,7 @@ use Neducatio\WebSocketNotification\Common\JSON;
 /**
  * WebSocket Notification Server Pusher
  */
-class ServerPusher
+class ServerConnection
 {
   /**
    * @var array

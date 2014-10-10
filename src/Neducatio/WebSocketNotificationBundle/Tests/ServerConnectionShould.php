@@ -1,18 +1,18 @@
 <?php
 namespace Neducatio\WebSocketNotificationBundle\Tests;
 
-use Neducatio\WebSocketNotificationBundle\ServerPusher;
+use Neducatio\WebSocketNotificationBundle\ServerConnection;
 use Mockery as m;
 
 /**
- * ServerPusherShould
+ * ServerConnectionShould
  */
-class ServerPusherShould extends \PHPUnit_Framework_TestCase
+class ServerConnectionShould extends \PHPUnit_Framework_TestCase
 {
   const HOST = 'localhost';
   const PORT = 8888;
 
-  private $serverPusher;
+  private $serverConnection;
 
   /**
    * Test for __construct
@@ -21,7 +21,7 @@ class ServerPusherShould extends \PHPUnit_Framework_TestCase
    */
   public function beInstanceOfServerCommand()
   {
-    $this->assertInstanceOf('Neducatio\WebSocketNotificationBundle\ServerPusher', $this->serverPusher);
+    $this->assertInstanceOf('Neducatio\WebSocketNotificationBundle\ServerConnection', $this->serverConnection);
   }
 
   /**
@@ -29,7 +29,7 @@ class ServerPusherShould extends \PHPUnit_Framework_TestCase
    */
   public function setUp()
   {
-    $this->serverPusher = new ServerPusher(['host' => self::HOST, 'port' =>  self::PORT]);
+    $this->serverConnection = new ServerConnection(['host' => self::HOST, 'port' =>  self::PORT]);
     parent::setUp();
   }
 
