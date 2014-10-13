@@ -16,6 +16,9 @@ class Configuration implements ConfigurationInterface
 
     $rootNode
       ->children()
+        ->scalarNode('enabled')
+          ->defaultTrue()
+        ->end()
         ->scalarNode('host')
           ->defaultValue('127.0.0.1')
           ->cannotBeEmpty()

@@ -19,9 +19,15 @@ class NeducatioWebSocketNotificationExtension extends Extension
     $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
     $loader->load('services.yml');
-    $container
-      ->getDefinition('neducatio_websocketnotification.wsn_server_connection')
-      ->addArgument(['host' => $config['host'], 'port' => $config['port']]);
+
+    $serverConnection = $container->getDefinition('neducatio_websocketnotification.wsn_server_connection');
+
+    if ($config['enabled']) {
+      $serverConnection->addArgument(['host' => $config['host'], 'port' => $config['port']]);
+    }
+    else {
+      $serverConnection->setClass('Neducatio\WebSocketNotificationBundle\Mock\ServerConnection');
+    }
 
     $loader->load('commands.yml');
 
