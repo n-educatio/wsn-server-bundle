@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
           ->defaultValue(5555)
           ->cannotBeEmpty()
         ->end()
-        ->scalarNode('websocket-port')
+        ->scalarNode('websocket_port')
           ->defaultValue(8080)
           ->cannotBeEmpty()
         ->end()

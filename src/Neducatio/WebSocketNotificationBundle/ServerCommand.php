@@ -53,7 +53,7 @@ class ServerCommand extends BaseCommand
   {
     $config = [];
 
-    foreach(['host', 'port', 'websocket-port'] as $paramaterName) {
+    foreach(['host', 'port', 'websocket_port'] as $paramaterName) {
       $config[$paramaterName] = (null !== ($parameter = $commandLineInput->getOption($paramaterName)))
         ? $parameter
         : $this->bundleConfiguration[$paramaterName];
